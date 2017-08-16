@@ -1,0 +1,15 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <!-- login toolbar : -->
+      <ul class="nav navbar-nav navbar-right">
+      	<% if signed_in? %>
+	      	<li><%= link_to current_user.email, edit_user_registration_path %></li>
+	    	<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+		<% else %>
+    		<li><%= link_to "Sign in", new_user_session_path %></li>
+		<% end %>
+      </ul><!-- /.login toolbar -->
+  </div><!-- /.container-fluid -->
+</nav>
