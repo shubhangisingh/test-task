@@ -1,11 +1,11 @@
 
-* Create a clean ruby on rails application using twitter bootstrap.
+* Create a clean ruby on rails application using twitter bootstrap.  -- done
 
-* Create User model with fields first, last, email.
+* Create User model with fields first, last, email. -- done
 
-* Install and setup devise gem to use the User model for auth (email used as a user name).
+* Install and setup devise gem to use the User model for auth (email used as a user name).-- done
 
-* Generate devise views via rake command
+* Generate devise views via rake command -- done
 
 * On the register new user view add a new text field called Secret Code.
 
@@ -34,4 +34,3 @@
 * create a role called :admin and manually in DB associate it with the admin user created manually earlier (no UI needed for this config).
 
 * configure so that SecretCode page link and entire controller is only accessible to :admin role users.
->>>>>>> 9ee7a2d7e94e99d8849657a20363c9cb51af4c89
