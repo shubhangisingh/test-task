@@ -8,11 +8,23 @@ class User < ApplicationRecord
 
   has_one :secret_code
 
-  after_create :update_registration_token
 
-  private
-  def update_registration_token
-    code= SecretCode.find_by(token: registration_token)
-    code.update(user_id: self.id)
+  ## adding cancan
+
+  ROLES = %i[admin normal]
+
+def roles=(roles)
+  roles = [*roles].map { |r| r.to_sym }
+  self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+end
+
+def roles
+  ROLES.reject do |r|
+    ((roles_mask.to_i || 0) & 2**ROLES.index(r)).zero?
   end
+end
+
+def has_role?(role)
+  roles.include?(role)
+end
 end

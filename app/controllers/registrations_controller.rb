@@ -6,6 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
    if SecretCode.check_token(params[:user][:registration_token])
      build_resource(registration_params)
      if resource.save
+       update_registration_token
        if resource.active_for_authentication?
          set_flash_message :notice, :signed_up if is_navigational_format?
          sign_up(resource_name, resource)
@@ -14,6 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
          respond_with resource, :location => after_sign_up_path_for(resource)
        end
+
 
      else
        clean_up_passwords
@@ -29,5 +31,9 @@ class RegistrationsController < Devise::RegistrationsController
   def registration_params
     params.require(:user).permit(:email, :first_name, :last_name,
      :password, :password_confirmation, :registration_token)
+  end
+  def update_registration_token
+    code = SecretCode.find_by(token: params[:user][:registration_token])
+      code.update(user_id: resource.id)
   end
 end
