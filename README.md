@@ -29,8 +29,8 @@
 
 * secret code index page should show user email address for a secret code after they use it for registration in a table next to the code. --done
 
-* setup CanCan ACL gem.
+* setup CanCan ACL gem. --done
 
-* create a role called :admin and manually in DB associate it with the admin user created manually earlier (no UI needed for this config).
+* create a role called :admin and manually in DB associate it with the admin user created manually earlier (no UI needed for this config). --done
 
-* configure so that SecretCode page link and entire controller is only accessible to :admin role users.
+* configure so that SecretCode page link and entire controller is only accessible to :admin role users. --done
