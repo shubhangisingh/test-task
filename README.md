@@ -7,9 +7,9 @@
 
 * Generate devise views via rake command -- done
 
-* On the register new user view add a new text field called Secret Code.
+* On the register new user view add a new text field called Secret Code. -- done
 
-* Restrict user registration so a hard coded secret code must be entered, eg. 'foobar'.
+* Restrict user registration so a hard coded secret code must be entered, eg. 'foobar'. --done
 
 * Create a new user with seeds called 'admin'
 

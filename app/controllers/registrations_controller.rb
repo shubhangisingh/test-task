@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
      end
    else
      redirect_to :new_user_registration
-     set_flash_message :alert, 'Not Allowed'
+     set_flash_message :alert, 'registration_token_required'
    end
 
   def registration_params
