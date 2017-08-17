@@ -11,23 +11,23 @@
 
 * Restrict user registration so a hard coded secret code must be entered, eg. 'foobar'. --done
 
-* Create a new user with seeds called 'admin'
+* Create a new user with seeds called 'admin' --done
 
-* Create a controller/model SecretCode (1-to-1 relationship to Users which can be null, plus code string and usual created/updated).
+* Create a controller/model SecretCode (1-to-1 relationship to Users which can be null, plus code string and usual created/updated). --done
 
-* The controller needs to provide a view and actions to generate a number of secret codes.
+* The controller needs to provide a view and actions to generate a number of secret codes. --done
 
-* Index page shows secret codes available, and the associated user email address for ones that have an association.
+* Index page shows secret codes available, and the associated user email address for ones that have an association. --done
 
-* Index page also has a button to generate more secret code models which by default have no associated user and a randomly generated secret code (some short hash or guid).
+* Index page also has a button to generate more secret code models which by default have no associated user and a randomly generated secret code (some short hash or guid). --done
 
 * The index page also has a drop down filled with 1, 10, 20, 50, 100 which determines how many secret codes to generate (default selection on drop down is 10).
 
-* link secret code field on user registration page to only allow available secret code models (one with no current user associated).
+* link secret code field on user registration page to only allow available secret code models (one with no current user associated). -- done
 
-* registering a user will create association between user and the valid secret code they used.
+* registering a user will create association between user and the valid secret code they used. --done
 
-* secret code index page should show user email address for a secret code after they use it for registration in a table next to the code.
+* secret code index page should show user email address for a secret code after they use it for registration in a table next to the code. --done
 
 * setup CanCan ACL gem.
 

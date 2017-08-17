@@ -2,7 +2,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-   if params[:user][:registration_token].present?
+
+   if SecretCode.check_token(params[:user][:registration_token])
      build_resource(registration_params)
      if resource.save
        if resource.active_for_authentication?
@@ -13,19 +14,20 @@ class RegistrationsController < Devise::RegistrationsController
          set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
          respond_with resource, :location => after_sign_up_path_for(resource)
        end
+
      else
        clean_up_passwords
        respond_with resource
      end
    else
      redirect_to :new_user_registration
-     set_flash_message :alert, 'registration_token_required'
+     set_flash_message :alert, 'registration_token_invalid'
    end
+
+  end
 
   def registration_params
     params.require(:user).permit(:email, :first_name, :last_name,
-      :registration_token, :password, :password_confirmation)
+     :password, :password_confirmation, :registration_token)
   end
-
-end
 end
