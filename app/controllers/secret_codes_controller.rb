@@ -26,12 +26,11 @@ class SecretCodesController < ApplicationController
   # POST /secret_codes.json
   def create
     @secret_code = SecretCode.new
-
     respond_to do |format|
       if @secret_code.save
         format.html { redirect_to secret_codes_path, notice: 'Secret code was successfully created.' }
       else
-        format.html { render :index }
+        format.html { render :index, alert: 'Not saved' }
       end
     end
   end
