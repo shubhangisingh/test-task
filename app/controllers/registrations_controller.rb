@@ -2,7 +2,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-
+   ## check_token method present in model
    if SecretCode.check_token(params[:user][:registration_token])
      build_resource(registration_params)
      if resource.save
@@ -33,6 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
      :password, :password_confirmation, :registration_token)
   end
   def update_registration_token
+  ## associating token with user
     code = SecretCode.find_by(token: params[:user][:registration_token])
       code.update(user_id: resource.id)
   end
