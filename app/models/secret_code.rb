@@ -1,9 +1,8 @@
 class SecretCode < ApplicationRecord
 
   belongs_to :user, optional: true
-
+  ## optional: true introduced in rails 5 to allow nil association
   before_create :generate_token
-
 
   def self.check_token(new_token)
      SecretCode.exists?(token: new_token, user: nil)
